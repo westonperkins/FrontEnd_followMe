@@ -6,7 +6,7 @@ import Welcome from './Components/Welcome/Welcome';
 import Home from './Components/Home/Home';
 import NewPost from './Components/NewPost';
 import UserFeed from './Components/UserFeed';
-import Feed from './Components/MainFeed';
+import MainFeed from './Components/MainFeed';
 
 //NOTE: 
   //may have to change "/newPost" to :id and render router.props
@@ -23,7 +23,6 @@ function App() {
       <Route exact path='/home' component={Home} />
       <Route exact path="/newPost" component={NewPost} />
       <Route exact path="/newPost" component={UserFeed} />
-      <Route exact path="/" component={Feed} />
       </main>
     </div>
   );
