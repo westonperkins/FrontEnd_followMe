@@ -19,7 +19,7 @@ const Signin = () => {
                 <input type="text" placeholder="password"/>
             </div>
             <button className="btn">
-                <Link to={'/home'}><span className='span1'>Login</span></Link>
+                <Link to={'/yourProfile'}><span className='span1'>Login</span></Link>
                 </button>
             <p className="text">
                 Don't Have Account?  <Link to={'/signup'}><span>Sign Up</span></Link>  
