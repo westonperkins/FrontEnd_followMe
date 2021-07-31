@@ -6,6 +6,7 @@ const Signin = () => {
     return (
         <div className='main'>
             <h1>Day in the life</h1>
+            <a href="/">Back</a>
         <div className='container'>
             
             <h1>Please Log in</h1>
