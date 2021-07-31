@@ -65,11 +65,9 @@ const YourProfile = ({match}) => {
         <Link to={'/'}>
         <button id='cancel'>Log Out</button>
         </Link>
-      
-
-            
-       
+    
         <button id='cancel' onClick={deleteUser}>Delete</button>
+        
         <Link to={`/profile/${match.params.username}/edit`}>
         <button id='cancel' style={updateButton}>Edit</button>
         </Link>

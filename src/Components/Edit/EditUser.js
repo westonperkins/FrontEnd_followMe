@@ -1,18 +1,20 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Route, Link, useHistory } from 'react-router-dom'
 import axios from 'axios';
 
 const EditUser = ({match}) => {
+    const history = useHistory()
     const [updateData, setUpdateData] = useState([])
 
 
     useEffect(() => {
         axios.get(`http://localhost:5000/${match.params.username}`)
-        .then(res => res.data )
-        .then(res => setUpdateData(res))
+        // .then(res => res.data )
+        .then(res => setUpdateData(res.data))
         .catch(err => console.error(err))
       }, [])
+
 
 
 
@@ -30,13 +32,15 @@ const EditUser = ({match}) => {
     software: updateData.software,
     hardware: updateData.hardware,
     profileImage: updateData.profileImage
-}
-axios.put(`http://localhost:5000/${updateData.username}/edit`, editedUser)
+} 
+    
+axios.put(`http://localhost:5000/${match.params.username}/edit`, editedUser)
 .then(() => console.log(`updated username: "${updateData.username}" successful`) )
-.then(res => setUpdateData(res) )
+.then(res => history.push(`/profile/${updateData.username}`))
+// .then(res =>  setUpdateData(res))
+// .then(res =>  setUpdateData(res.data.updateData))
 .catch(error => {console.log(error)})
  }
-
 
  function handleChange(event) {
     const {name, value} = event.target
@@ -49,6 +53,8 @@ axios.put(`http://localhost:5000/${updateData.username}/edit`, editedUser)
     console.log(updateData);
 }
  
+
+
     return (
         <div className='new'>
         <header>
@@ -61,12 +67,14 @@ axios.put(`http://localhost:5000/${updateData.username}/edit`, editedUser)
 
             <div className='label'>
         <label htmlFor="name">name:</label>
-        <input onChange={handleChange} name='name' className='box2' type="text"/>
+        <input onChange={handleChange} name='name'className='box2' type="text"/>
+        
         </div>
 
             <div className='label'>
         <label >username:</label>
-        <input onChange={handleChange} name='username'  className='box2' type="text"/>
+        <input onChange={handleChange} name='username' className='box2' type="text"/>
+        
         </div>
             <div className='label'>
         <label >password:</label>
@@ -104,9 +112,9 @@ axios.put(`http://localhost:5000/${updateData.username}/edit`, editedUser)
 
 
         <div className='button'>
-        <Link to={`/profile/${match.params.username}`}>
+        
         <button onClick={updateUser}>Save</button>
-        </Link>
+        
         
        
     <Link to={`/profile/${match.params.username}`}>
