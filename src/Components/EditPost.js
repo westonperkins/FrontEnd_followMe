@@ -31,12 +31,13 @@ const EditPost = ({match}) => {
             imageUpload: updateData.imageUpload,
         };
         console.log(editedPostData, "test")
-        axios.put(`http://localhost:5000/posts/edit/${match.params.id}`, editedPostData)
+        axios.put(`http://localhost:5000/posts/${match.params.id}/edit`, editedPostData)
         .then(res => {
             console.log(res)
             console.log(match.params.id)
             setUpdateData(res)
           })
+        .then(window.location="/posts/days")
     }
 
     const handleChange = (e) => {
@@ -46,19 +47,16 @@ const EditPost = ({match}) => {
     return (
         <div>
             {updatePost ? 
-            <form>
+            <form onSubmit={updatePost}>
                 <label htmlFor="instance"/>
                 <textarea id="instance" cols="30" rows="10" onChange={handleChange}>{updateData.instance}</textarea>
                 <button>Gif</button>
                 <a href="/posts/days">Cancel</a>
-                <Link to="/posts/days" onClick={updatePost}>Update</Link>
-            </form>: null
+                <button type="submit">Update</button>
+            </form> : null
             }
         </div>
     )
 }
 
 export default EditPost
-
-// {/* <input type="file" name="imageUpload" accept=".png, .jpg, .jpeg"></input> */}
-// {/* <img src={updateData.imageUpload} alt=""/> */}

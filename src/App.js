@@ -10,9 +10,6 @@ import MainFeed from './Components/MainFeed';
 import EditPost from './Components/EditPost';
 import SearchResults from './Components/SearchResults';
 
-//NOTE: 
-  //may have to change "/newPost" to :id and render router.props
-  //haven't routed EditPost.js yet
 function App() {
 const initialState = {instance:'',imageUpload: ''};
 const [postData, setPostData] = useState(initialState)
@@ -21,10 +18,10 @@ const [postData, setPostData] = useState(initialState)
     <div className="App">
       <nav>
         <div className="nav-wrapper">
-            <a href="/">Explore</a>
+            <Link to="/">Explore</Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><a href="/posts/days">Posts and Activity</a></li>
-              <li><a href="/signin">Sign in</a></li>
+              <li><Link to="/posts/days">Posts and Activity</Link></li>
+              <li><Link to="/signin">Sign in</Link></li>
             </ul>
         </div>
       </nav>
@@ -34,17 +31,11 @@ const [postData, setPostData] = useState(initialState)
       <Route exact path='/welcome' component={Welcome} />
       <Route exact path='/' component={MainFeed} />
       <Route exact path="/posts/days" component={UserFeed} />
-      {/* <Route exact path={"posts/edit/"+postData._id} component={EditPost} /> */}
       <Route
           exact path="/posts/edit/:id"
           render={routerProps => (
             <EditPost match={routerProps.match}/>
             )} />
-      {/* <Route
-          exact path="/:username"
-          render={routerProps => (
-            <SearchResult match={routerProps.match}/>
-            )} /> */}
       </main>
     </div>
   );

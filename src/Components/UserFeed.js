@@ -40,7 +40,7 @@ const UserFeed = () => {
                 {/* <img src={post.imageUpload} alt=""/> */}
                 <div className="edit-delete-container">
                     <button onClick={() => deletePost(post._id)} className="waves-effect waves-teal btn-flat" id="delete-btn">Delete</button>
-                    <a href={"/posts/edit/"+post._id} className="waves-effect waves-teal btn-flat">Edit</a>
+                    <Link to={"/posts/edit/"+post._id} className="waves-effect waves-teal btn-flat">Edit</Link>
                 </div>
             </div>
         )
@@ -51,7 +51,7 @@ const UserFeed = () => {
             <NewPost setPosts={setPosts} />
             <h1>Your Feed</h1>
             <div className="user-info">
-                <p>Profile info</p>
+                <p>timestamp</p>
             </div>
             <p>{allPosts}</p>
         </div>
