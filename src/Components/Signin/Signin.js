@@ -5,25 +5,31 @@ import { Link } from 'react-router-dom'
 const Signin = () => {
     return (
         <div className='main'>
-            <h1>Day in the life</h1>
+            <h2>Follow Me</h2>
             <a href="/">Back</a>
         <div className='container'>
-            
-            <h1>Please Log in</h1>
-            <div className="form-control">
-                 {/* <label>Email</label> */}
-                 <input type="text" placeholder="email"/>
+            <h5>Please Log in</h5>
+
+            <div className="row">
+            <form className="col s12">
+            <div className="row">
+                <div class="input-field col s12">
+                 <input id="email" type="email" class="validate"/>
+                 <label for="email">Email</label> 
+                </div>
             </div>
-           
-            <div className="form-control">
-                {/* <label>Password</label> */}
-                <input type="text" placeholder="password"/>
-            </div>
-            <button className="btn">
-                <Link to={'/yourProfile'}><span className='span1'>Login</span></Link>
-                </button>
+            <div className="row">
+                <div class="input-field col s12">
+                    <input type="text" class="validate"/>
+                    <label for="text">Password</label> 
+                </div>
+            </div> 
+            </form>
+            </div>      
+                
+            <a href={'/yourProfile'}><button className="btn waves-effect waves-light">Login</button></a>
             <p className="text">
-                Don't Have Account?  <Link to={'/signup'}><span>Sign Up</span></Link>  
+                Don't Have Account?  <a href={'/signup'}><button className="btn waves-effect waves-light">Sign Up</button ></a>  
             </p>
         </div>
         </div>
