@@ -48,3 +48,19 @@ body {
 #delete-btn {
   color: #F44336;
 }
+
+
+/* _________________________________ */
+
+.userHeader {
+  display: flex;
+  justify-content: space-around;
+  color: black;
+}
+
+.postsandactivities,
+.explore,
+.newPost,
+.posts {
+  color: black;
+}

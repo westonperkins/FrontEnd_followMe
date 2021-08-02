@@ -9,26 +9,33 @@ import EditPost from './EditPost';
 const UserFeed = () => {
     const [posts, setPosts] = useState([])
 
-    useEffect(() => {
-        fetchAllPosts()
-    }, [])
+    // useEffect(() => {
+    //     fetchAllPosts()
+    // }, [])
 
-    const fetchAllPosts = () => {
-        fetch('http://localhost:5000/posts/days')
-          .then(res => res.json())
-          .then(res => {
-            console.log(res)
-            setPosts(res)
-          })
-          .catch(err => {
-            console.error(err);
-          });
-      }
+    // const fetchAllPosts = () => {
+    //     fetch('http://localhost:5000/posts/days')
+    //       .then(res => res.json())
+    //       .then(res => {
+    //         console.log(res)
+    //         setPosts(res)
+    //       })
+    //       .catch(err => {
+    //         console.error(err);
+    //       });
+    //   }
+
+    const userPosts = useEffect(() => {
+        axios.get('http://localhost:5000/posts/days', {
+            headers: {"auth-token": localStorage.getItem("auth-token")}
+        })
+        .then(res => setPosts(res.data))
+    }, [])
     
     function deletePost(_id) {
         axios.delete(`http://localhost:5000/posts/${_id}`)
         .then(()=> {
-            fetchAllPosts();
+            userPosts();
         })
         console.log(`deleted post with id of ${_id}`)
     }
@@ -36,6 +43,7 @@ const UserFeed = () => {
     let allPosts = posts.map(post => {
         return (
             <div className="post-container">
+                <Link to={`/profile/${post.postedBy}`} name={post.postedBy}>{post.postedBy}</Link>
                 <p className="instance-text">{post.instance}</p>
                 {/* <img src={post.imageUpload} alt=""/> */}
                 <div className="edit-delete-container">
