@@ -15,13 +15,15 @@ import EditPost from './Components/EditPost';
 import SearchResults from './Components/SearchResults';
 
 // Westons routes
-import Login from './components/Login'
-import Test from './components/Test'
-import Users from './components/Users'
-import LoggedIn from './components/LoggedIn'
-import Logout from './components/Logout'
-import Posts from './components/Posts'
-import CreatePost from './components/CreatePost'
+import Login from './Components/weston/Login'
+import Register from './Components/weston/Register/Register'
+import Users from './Components/weston/Users'
+import LoggedIn from './Components/weston/LoggedIn'
+import Logout from './Components/weston/Logout'
+import Posts from './Components/weston/Posts'
+import CreatePost from './Components/weston/CreatePost'
+import UserProfile from './Components/weston/UserProfile'
+import UserPosts from './Components/weston/UserPosts'
 // ____________
 
 export const UserContext = createContext()
@@ -72,8 +74,12 @@ const logout = () => {
   localStorage.setItem("auth-token", "")
   window.location='/login'
 }
-console.log(userData.user)
+// console.log(userData.user)
 // ________________________
+
+
+
+
 
   return (
 
@@ -83,36 +89,32 @@ console.log(userData.user)
     {userData.user ? 
       ( 
         <nav>
-          <Link to={'/'}>Users ({userData.user.name})</Link>
-          <br></br>
-          <Link to={'/logout'} onClick={logout}>Logout</Link>
-          <br></br>
-          <Link to={'/posts/days'}>Posts</Link>
-          <br></br>
-          <Link to={'/posts/newpost'}>Create Post</Link>
+          <div className="userHeader">
+            <Link to={'/userprofile'}>Logged in as: {userData.user.name}</Link>
+            <Link to={'/posts/days'} className="posts">Posts</Link>
+            <Link to={'/posts/newpost'} className="newPost">Create Post</Link>
+            <Link to="/posts/days" className="explore">Explore</Link>
+            <ul id="nav-mobile" className="right hide-on-med-and-down">
+              <li><Link to="/posts/days" className="postsandactivities">Posts and Activity</Link></li>
+              {/* <li><Link to="/signin">Sign in</Link></li> */}
+            </ul>
+            <Link to={'/logout'} onClick={logout}>Logout</Link>
+          </div>
         </nav> 
       ) :
       ( 
-        <nav>
+        <nav className="userHeader"> 
           <Link to={'/login'}>Login</Link>
-          <br></br>
           <Link to={'/register'}>Register</Link>
         </nav>
       )
     }
 
     <div className="App">
-      <nav>
-        <div className="nav-wrapper">
-            <Link to="/">Explore</Link>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><Link to="/posts/days">Posts and Activity</Link></li>
-              <li><Link to="/signin">Sign in</Link></li>
-            </ul>
-        </div>
-      </nav>
+  
       <main>
-      <Route exact path='/signin' component={Signin} />
+      {/* <Route exact path='/signin' component={Signin} /> */}
+      <Route exact path='/userprofile' component={UserProfile}/>
       <Route exact path='/signup' component={Profile} />
       <Route exact path='/welcome' component={Welcome} />
       <Route exact path='/' component={MainFeed} />
@@ -123,13 +125,14 @@ console.log(userData.user)
             <EditPost match={routerProps.match}/>
             )} />
 
-      <Route path="/register" exact component={Test}/>
+      <Route path="/register" exact component={Register}/>
       <Route path="/" exact component={Users}/>
       <Route path='/login' exact component={Login}/>
       {/* <Route path='/logout' exact component={Logout}/> */}
       <Route path='/loggedIn' exact component={LoggedIn}/>
-      <Route path='/posts/days' exact component={Posts}/>
+      {/* <Route path='/posts/days' exact component={Posts}/> */}
       <Route path='/posts/newpost' exact component={CreatePost}/>
+      <Route path='/profile/:user' exact component={UserPosts}/>
       </main>
     </div>
     </UserContext.Provider>
