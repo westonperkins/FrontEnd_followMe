@@ -63,7 +63,7 @@ const Register =  () => {
                 password: "",
             })
 
-            window.location='/'
+            window.location='/posts/days'
         } catch(err) {
             err.response.data.msg ?
                 setErrorMsg(err.response.data.msg) : 
