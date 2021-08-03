@@ -53,23 +53,34 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <div>
-            <h1>
-                Login:
-            </h1>
-            <p>
-                If you do not have an account: <Link to={'/register'}>Register Here</Link>
+        <div className="login-regis-container">
+            {/* <div>
+                <Link to={'./register'}>register</Link>
+                <br>
+                </br>
+                <Link to={'/'}>Users</Link>
+            </div> */}
+            <div className="login-regis-headers">
+            <h3>Login</h3>
+            <p> If you do not have an account:
+            <Link to={'/register'}> Register Here</Link>
             </p>
             <Errors msg={errorMsg}/>
-            <form className="form">
+            </div>
+            <form className="col s12 form login-regis-form">
+            <div className="row">
+                <div className="input-field col s12">
+            {/* <form className="form"> */}
                 <label htmlFor="username">Username</label>
-                    <input type="text" id="username" onChange={handleChange} value={formState.username}/>   
+                    <input type="text" id="username" onChange={handleChange} value={formState.username}/>
+                </div>   
+                <div className="input-field col s12">
                 <label htmlFor="password">Password</label>
                     <input type="text" id="password" onChange={handleChange} value={formState.password}/>
-                <button onClick={handleSubmit}type="submit">Submit</button>           
+                </div>
+                <button className="btn waves-effect waves-light login-regis-btn" onClick={handleSubmit} type="submit">Login</button>           
+            </div>
             </form>
-        </div>
         </div>
     )
 }

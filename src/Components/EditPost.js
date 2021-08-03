@@ -37,7 +37,7 @@ const EditPost = ({match}) => {
             console.log(match.params.id)
             setUpdateData(res)
           })
-        .then(window.location="/posts/days")
+        .then(window.location='/posts/days')
     }
 
     const handleChange = (e) => {
@@ -53,7 +53,7 @@ const EditPost = ({match}) => {
                 <div className="input-field col s12">
                 <label htmlFor="instance"/>
                 <textarea id="instance" className="materialize-textarea" onChange={handleChange}>{updateData.instance}</textarea>
-                <a href="/posts/days" className="btn waves-effect waves-light">Cancel</a>
+                <a href="/posts/days" className="btn waves-effect waves-light" id="x">Cancel</a>
                 <button type="submit" className="btn waves-effect waves-light">Update</button>
                 </div>
             </div>

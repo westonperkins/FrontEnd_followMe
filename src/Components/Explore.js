@@ -5,7 +5,7 @@ import axios from 'axios';
 import M from 'materialize-css'
 import SearchBar from './SearchBar';
 
-const MainFeed = ({match}) => {
+const Explore = ({match}) => {
     const [profileFeed, setProfileFeed] = useState([])
 
     useEffect(() => {
@@ -15,23 +15,12 @@ const MainFeed = ({match}) => {
       }, [])
 
 
-      let feedOfProfiles = profileFeed.map(profile => {
-        return (
-            <div className="post-content">
-                <p>{profile.username}</p>
-                <p>{profile.name}</p>
-                <p>{profile.company}</p>
-                <p>{profile.occupation}</p>
-            </div>
-            )
-        })
-
     return (
-        <div>
+        <div className="search-container">
+            <h4>Search</h4>
             <SearchBar placeholder="Enter..." data={profileFeed}/>
-            {/* <div><p>{feedOfProfiles}</p></div> */}
         </div>
     )
 }
 
-export default MainFeed
+export default Explore
