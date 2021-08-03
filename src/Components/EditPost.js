@@ -45,14 +45,18 @@ const EditPost = ({match}) => {
     }
 
     return (
-        <div>
+
+        <div id="create-post-container" className="row">
             {updatePost ? 
-            <form onSubmit={updatePost}>
+            <form onSubmit={updatePost} className="col s12">
+                <div className="row">
+                <div className="input-field col s12">
                 <label htmlFor="instance"/>
-                <textarea id="instance" cols="30" rows="10" onChange={handleChange}>{updateData.instance}</textarea>
-                <button>Gif</button>
-                <a href="/posts/days">Cancel</a>
-                <button type="submit">Update</button>
+                <textarea id="instance" className="materialize-textarea" onChange={handleChange}>{updateData.instance}</textarea>
+                <a href="/posts/days" className="btn waves-effect waves-light">Cancel</a>
+                <button type="submit" className="btn waves-effect waves-light">Update</button>
+                </div>
+            </div>
             </form> : null
             }
         </div>

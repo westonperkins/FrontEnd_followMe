@@ -23,7 +23,16 @@ const UserPosts = (props) => {
                 console.log(post)
                 if(props.match.params.user === post.postedBy) {
                     return (
+                        <div>
+                        <div>
+                            <p>profile</p>
+                            <p>{post.name}</p>
+                            <p>{post.username}</p>
+                            <p>{post.occupation}</p>
+                            <p>{post.company}</p>
+                        </div>
                         <p>{post.instance} - {post.postedBy}</p>
+                        </div>
                     )
                 } 
             })}
