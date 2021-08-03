@@ -2,6 +2,7 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import React, { createContext, useState, useEffect } from 'react'
+import M from 'materialize-css'
 
 import axios from 'axios'
 
@@ -24,6 +25,7 @@ import Posts from './Components/weston/Posts'
 import CreatePost from './Components/weston/CreatePost'
 import UserProfile from './Components/weston/UserProfile'
 import UserPosts from './Components/weston/UserPosts'
+import LogoutCheckpoint from './Components/weston/LogoutCheckpoint'
 // ____________
 
 export const UserContext = createContext()
@@ -66,6 +68,12 @@ useEffect(() => {
   isLoggedIn()
 }, [])
 
+
+
+const logoutCheckpoint = () => {
+  window.alert("Are you sure you want to logout?")
+}
+
 const logout = () => {
   setUserData({
     token: undefined,
@@ -98,7 +106,16 @@ const logout = () => {
               {/* <li><Link to="/posts/days" className="postsandactivities">Posts and Activity</Link></li> */}
               {/* <li><Link to="/signin">Sign in</Link></li> */}
             </ul>
-            <Link to={'/logout'} onClick={logout}>Logout</Link>
+            <Link to={'/logout'} onClick={logout} className="modal-trigger" href="#modal1">Logout</Link>
+            {/* <div id="modal1" className="modal">
+              <div className="modal-content">
+                <h4>Modal Header</h4>
+                  <p>A bunch of text</p>
+              </div>
+              <div className="modal-footer">
+                <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
+              </div>
+            </div> */}
           </div>
         </nav> 
       ) :

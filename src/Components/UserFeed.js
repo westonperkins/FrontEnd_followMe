@@ -45,6 +45,7 @@ const UserFeed = () => {
             <div className="post-container">
                 <Link to={`/profile/${post.postedBy}`} name={post.postedBy}>{post.postedBy}</Link>
                 <p className="instance-text">{post.instance}</p>
+                <p>{post.date}</p>
                 {/* <img src={post.imageUpload} alt=""/> */}
                 <div className="edit-delete-container">
                     <button onClick={() => deletePost(post._id)} className="waves-effect waves-teal btn-flat" id="delete-btn">Delete</button>
