@@ -15,6 +15,7 @@ const SearchBar = ({placeholder, data}) => {
             || ((value.position.toLowerCase().includes(searchTerm.toLowerCase())))
             || ((value.company.toLowerCase().includes(searchTerm.toLowerCase())))
             || ((value.username.toLowerCase().includes(searchTerm.toLowerCase())))
+            || ((value.position.toLowerCase().includes(searchTerm.toLowerCase())))
             )
         })
         if (searchTerm === "") {
@@ -38,12 +39,16 @@ const SearchBar = ({placeholder, data}) => {
                 {filteredData.map((value, key) => {
                     return(
                         <div target="_blank">
-                            <Link to={"/"+value.username}>
-                                <div>
-                                <p>{value.username}</p>
-                                <p>{value.name}</p>
-                                <p>{value.company}</p>
-                                <p>{value.occupation}</p>
+                            <Link to={"/profile/"+value.name}>
+                                <div className="card horizontal">
+                                    <div class="card-stacked">
+                                        <div class="card-content">
+                                            <p>{value.username}</p>
+                                            <p>{value.name}</p>
+                                            <p>{value.company}</p>
+                                            <p>{value.occupation}</p>
+                                        </div>
+                                    </div>
                                 </div>
                             </Link>
                         </div>

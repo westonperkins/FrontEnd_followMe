@@ -90,12 +90,12 @@ const logout = () => {
       ( 
         <nav>
           <div className="userHeader">
-            <Link to={'/userprofile'}>Logged in as: {userData.user.name}</Link>
+            <Link to={'/userprofile/'+userData.user.name}>Logged in as: {userData.user.name}</Link>
             <Link to={'/posts/days'} className="posts">Posts</Link>
-            <Link to={'/posts/newpost'} className="newPost">Create Post</Link>
-            <Link to="/posts/days" className="explore">Explore</Link>
+            {/* <Link to={'/posts/newpost'} className="newPost">Create Post</Link> */}
+            <Link to="/explore" className="explore">Explore</Link>
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><Link to="/posts/days" className="postsandactivities">Posts and Activity</Link></li>
+              {/* <li><Link to="/posts/days" className="postsandactivities">Posts and Activity</Link></li> */}
               {/* <li><Link to="/signin">Sign in</Link></li> */}
             </ul>
             <Link to={'/logout'} onClick={logout}>Logout</Link>
@@ -114,10 +114,10 @@ const logout = () => {
   
       <main>
       {/* <Route exact path='/signin' component={Signin} /> */}
-      <Route exact path='/userprofile' component={UserProfile}/>
-      <Route exact path='/signup' component={Profile} />
-      <Route exact path='/welcome' component={Welcome} />
-      <Route exact path='/' component={MainFeed} />
+      {/* <Route exact path='/welcome' component={Welcome} /> */}
+      <Route exact path='/userprofile/:user' component={UserProfile}/>
+      {/* <Route exact path='/signup' component={Profile} />  */}
+      <Route exact path='/explore' component={MainFeed} />
       <Route exact path="/posts/days" component={UserFeed} />
       <Route
           exact path="/posts/edit/:id"
@@ -126,12 +126,12 @@ const logout = () => {
             )} />
 
       <Route path="/register" exact component={Register}/>
-      <Route path="/" exact component={Users}/>
+      {/* <Route path="/" exact component={Users}/> */}
       <Route path='/login' exact component={Login}/>
       {/* <Route path='/logout' exact component={Logout}/> */}
       <Route path='/loggedIn' exact component={LoggedIn}/>
       {/* <Route path='/posts/days' exact component={Posts}/> */}
-      <Route path='/posts/newpost' exact component={CreatePost}/>
+      {/* <Route path='/posts/newpost' exact component={CreatePost}/> */}
       <Route path='/profile/:user' exact component={UserPosts}/>
       </main>
     </div>
