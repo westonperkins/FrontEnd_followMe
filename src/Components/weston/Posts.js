@@ -19,7 +19,10 @@ const Posts = () => {
               <ul>
                 {posts.map(post => {
                     return (
-                    <li>{post.instance}: {post.postedBy}</li>
+                    <div>
+                        <li>{post.instance}: {post.postedBy}</li>
+                        <li>test</li>
+                    </div>
                     )
                 })}
             </ul>

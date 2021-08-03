@@ -19,11 +19,12 @@ const Login = () => {
     const handleChange = (e) => {
         setFormState({ ...formState, [e.target.id]: e.target.value })
         console.log(formState)
+        console.log(userData)
     }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-
         console.log(formState)
         try {
             const newUser = {
@@ -47,18 +48,12 @@ const Login = () => {
         } catch (err) {
             err.response.data.msg
               ? setErrorMsg(err.response.data.msg)
-              : setErrorMsg("We have an error!");
+              : setErrorMsg("Password Or Username Incorrect");
         }
     }
 
     return (
         <div>
-            {/* <div>
-                <Link to={'./register'}>register</Link>
-                <br>
-                </br>
-                <Link to={'/'}>Users</Link>
-            </div> */}
             <div>
             <h1>
                 Login:
@@ -66,6 +61,7 @@ const Login = () => {
             <p>
                 If you do not have an account: <Link to={'/register'}>Register Here</Link>
             </p>
+            <Errors msg={errorMsg}/>
             <form className="form">
                 <label htmlFor="username">Username</label>
                     <input type="text" id="username" onChange={handleChange} value={formState.username}/>   

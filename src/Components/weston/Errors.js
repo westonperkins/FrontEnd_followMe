@@ -1,11 +1,15 @@
 import React from 'react'
 
 const Errors = ({msg}) => {
+    const styling = {
+        color: "red",
+        textAlign: "center"
+    }
     return (
         <div>
-            <h1>
+            <h5 style={styling}>
                 {msg}
-            </h1>
+            </h5>
         </div>
     )
 }
