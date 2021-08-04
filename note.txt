@@ -1,0 +1,32 @@
+import React,{useState, useEffect } from 'react'
+
+const YourProfile = () => {
+  const [persons, setPersons] = useState([])
+  useEffect(() => {
+      fetch('http://localhost:5000/')
+      .then(res => res.json())
+      .then(res => setPersons(res))
+      .catch(console.err)
+  }, [])
+  
+  return (
+      <div>
+          
+        
+        {persons.map(person => (
+          <div>
+                <p>{person.name}</p>
+                <p>{person.username}</p>
+          </div>
+            )
+        ) }
+ 
+      </div>
+  )
+}
+
+
+export default yourProfile
+
+
+<Route exact path='/yourProfile' component={YourProfile} />

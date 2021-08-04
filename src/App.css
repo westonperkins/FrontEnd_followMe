@@ -1,38 +1,209 @@
-.App {
-  text-align: center;
+/* Global CSS */
+body {
+  background-color: #eeeeee;
+  /* background-color: #ffffff; */
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h3 {
+  margin:0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/*********************************/
+/* NavBar */
+.nav-wrapper {
+ margin: 0rem 3rem 3rem 3rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.userHeader {
+  display: flex;
+  justify-content: space-between;
+  padding-left:1rem;
+  padding-right:1rem;
+}
+
+.nav-left {
+  align-self: flex-start;
+}
+.nav-right {
+  align-self: flex-end;
+}
+
+.nav-item {
+  margin: 1rem;
+}
+
+.nav-item:hover {
+  text-decoration: underline;
+}
+
+/* .postsandactivities,
+.explore,
+.newPost,
+.posts {
+  color: black;
+} */
+
+/*********************************/
+/*Log In & Register*/
+.login-regis-container{
+  background-color: #ffffff;
+  width: 80%;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 3rem auto;
+  padding: 3rem;
 }
 
-.App-link {
-  color: #61dafb;
+.login-regis-btn {
+  margin-left: .75rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/*********************************/
+/*Edit Post*/
+#cancel-btn {
+  color:#F44336;
 }
+
+/*********************************/
+/*Explore Page/Component*/
+.search-container{
+  margin:2rem;
+}
+  /*Search Bar Component*/
+  .search {
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .input-field {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .card:hover{
+    transform: scale(1.02);
+  }
+
+  .name{
+    color: black;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .occupation-company {
+    text-transform: capitalize;
+    color: #616161;
+  }
+
+  #at{
+    text-transform: none;
+  }
+  
+/*********************************/
+/* Posts Page */
+  /* NewPost Component */
+  .all-posts-container {
+    display: flex;
+    flex-direction: column;
+    margin:2rem;
+  }
+
+  #create-post-container {
+    width: 80%;
+    border: 1px solid #adadad;
+    background-color: #ffffff;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #post-btn{
+    justify-content: flex-end;
+  }
+
+/*********************************/
+  /* PostFeed Component */
+  .post-container {
+    width: 80%;
+    border: 1px solid #adadad;
+    background-color: #ffffff;
+    border-radius: 5px;
+    margin: 1rem auto;
+    padding: 1rem;
+  }
+
+  .username{
+    color:#26A69a;
+  }
+  .username:hover {
+    text-decoration: underline;
+  }
+
+  .instance-text {
+    margin: 1rem;
+  }
+
+/*********************************/
+/* UserProfile page/componenet - userprofile/:user */
+.userprof-container {
+  margin: 2rem;
+}
+
+.profile-container{
+  background-color: #ffffff;
+  border: 1px solid #adadad;
+  width: 80%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  padding: 1rem;
+}
+
+.profile-headers{
+  font-weight: 600;
+  margin: 0.2rem;
+}
+
+.profile-details{
+  font-weight: 400;
+  text-transform: capitalize;
+}
+
+#username-text-only {
+  text-transform: none;
+}
+
+  /* Show Posts (just from logged in User) */
+  .edit-delete-container{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-top: 1rem;
+  }
+
+  #delete-btn {
+    color: #F44336;;
+  }
+
+  #delete-btn:hover{
+    text-decoration: underline;
+  }
+
+  #edit-btn {
+    color:#26A69a;
+  }
+
+  #edit-btn:hover{
+    text-decoration: underline;
+  }
+
+
+/*********************************/
