@@ -24,9 +24,6 @@ const CreatePost = () => {
     const handleSubmit =  (e) => {
         e.preventDefault()
       
-            // console.log(post)
-            // setPost(initialState)
-
             const newPost = {
                 instance: post.instance,
                 imageUpload: post.imageUpload,
@@ -46,7 +43,6 @@ const CreatePost = () => {
                 imageUpload: "",
             })
     }
-
 
     return (
         <div className= "create-post-container">
