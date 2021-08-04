@@ -16,13 +16,6 @@ const UserPosts = (props) => {
         .then(res => setPosts(res.data))
     }, [])
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/${props.match.params.user}`)
-    //     .then(res => setProfiles(res.data))
-    //     .catch(console.err)
-    //   }, [])
-
-
     return (
         <div className="userprof-container">
             <div>
@@ -45,9 +38,3 @@ const UserPosts = (props) => {
 }
 
 export default UserPosts
-
-// {profiles.map(value => {
-//     <p className="name">{value.name}</p>
-//     <p className="username">{value.username}</p>
-//     <p className="occupation-company">{value.occupation} <span id="at">at</span> {value.company}</p>
-// })}

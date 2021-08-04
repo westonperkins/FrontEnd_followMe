@@ -1,11 +1,15 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Route, Link } from 'react-router-dom'
 import axios from 'axios';
 import M from 'materialize-css'
 import SearchBar from './SearchBar';
+import { UserContext } from '../App.js'
 
 const Explore = ({match}) => {
+
+    const { userData, setUserData } = useContext(UserContext)
+
     const [profileFeed, setProfileFeed] = useState([])
 
     useEffect(() => {
@@ -17,8 +21,20 @@ const Explore = ({match}) => {
 
     return (
         <div className="search-container">
-            <h4>Search</h4>
-            <SearchBar placeholder="Enter..." data={profileFeed}/>
+            <UserContext.Provider value={{ userData, setUserData }}> 
+            {userData.user ? (
+            <div>
+                <h4>Search</h4>
+                <SearchBar placeholder="Enter..." data={profileFeed}/>
+            </div>
+            ) : 
+            (
+            <div>   
+                <p>Please Log In: <Link to="/login">Login</Link></p>
+            </div>
+            )
+            }
+            </UserContext.Provider> 
         </div>
     )
 }

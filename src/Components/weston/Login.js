@@ -54,12 +54,6 @@ const Login = () => {
 
     return (
         <div className="login-regis-container">
-            {/* <div>
-                <Link to={'./register'}>register</Link>
-                <br>
-                </br>
-                <Link to={'/'}>Users</Link>
-            </div> */}
             <div className="login-regis-headers">
             <h3>Login</h3>
             <p> If you do not have an account:
@@ -70,7 +64,6 @@ const Login = () => {
             <form className="col s12 form login-regis-form">
             <div className="row">
                 <div className="input-field col s12">
-            {/* <form className="form"> */}
                 <label htmlFor="username">Username</label>
                     <input type="text" id="username" onChange={handleChange} value={formState.username}/>
                 </div>   

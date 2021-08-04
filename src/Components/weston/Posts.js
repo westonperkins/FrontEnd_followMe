@@ -21,7 +21,6 @@ const Posts = () => {
                     return (
                     <div>
                         <li>{post.instance}: {post.postedBy}</li>
-                        <li>test</li>
                     </div>
                     )
                 })}
