@@ -19,7 +19,10 @@ const UserProfile = (props) => {
 
     function deletePost(_id) {
         axios.delete(`https://followmeapplicationapi.herokuapp.com/posts/${_id}`)
-        // .then(() => posts())
+        .then((post)=> {
+            console.log(post)
+            setPosts(posts.filter(post => post._id !== _id))
+        })
         console.log(`deleted post with id of ${_id}`)
     }
 
@@ -54,12 +57,17 @@ const UserProfile = (props) => {
                 if(props.match.params.user === post.postedBy) {
                     return (
                         <div className="post-container">
+                        <div className="top-post">
+                        <div className="name-time">
                         <Link to={`/userprofile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
-                        <p className="instance-text">{post.instance}</p>
+                        <p className="timestamp">{post.date}</p>
+                        </div>
                         <div className="edit-delete-container">
                             <button onClick={() => deletePost(post._id)} className="waves-effect btn-flat" id="delete-btn">Delete</button>
                             <Link to={"/posts/edit/"+post._id} className=" waves-effect btn-flat" id="edit-btn">Edit</Link>
                         </div>
+                        </div>
+                        <p className="instance-text">{post.instance}</p>
                         </div>
                     )
                 } 
