@@ -1,6 +1,7 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Route, Link } from 'react-router-dom'
+import axios from 'axios'
 import M from 'materialize-css'
 
 
@@ -26,14 +27,14 @@ const SearchBar = ({placeholder, data}) => {
     }
     
     return (
+        <div>
         <div className="search">
             <div className="input-field">
                 <label className="label-icon" for="search">
-                    {/* <i className="material-icons">search</i> */}
                 </label>
                 <input id="search-bar" type="search" placeholder={placeholder} onChange={handleFilter}/>
-                <i className="material-icons">close</i>
             </div>
+        </div>
             {filteredData.length != 0 && (
             <div className="dataResult">
                 {filteredData.map((value, key) => {
@@ -41,12 +42,11 @@ const SearchBar = ({placeholder, data}) => {
                         <div target="_blank">
                             <Link to={"/profile/"+value.name}>
                                 <div className="card horizontal">
-                                    <div class="card-stacked">
-                                        <div class="card-content">
-                                            <p>{value.username}</p>
-                                            <p>{value.name}</p>
-                                            <p>{value.company}</p>
-                                            <p>{value.occupation}</p>
+                                    <div className="card-stacked">
+                                        <div className="card-content">
+                                            <p className="name">{value.name}</p>
+                                            <p className="username" >{value.username}</p>
+                                            <p className="occupation-company">{value.occupation} <span id="at">at</span> {value.company}</p>
                                         </div>
                                     </div>
                                 </div>

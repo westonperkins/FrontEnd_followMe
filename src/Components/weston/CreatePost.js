@@ -49,14 +49,20 @@ const CreatePost = () => {
 
 
     return (
-        <div>
+        <div className= "create-post-container">
             <h2>Add Post</h2>
             <Errors msg={errorMsg}/>
-            <form>
+            <div class="row">
+            <form class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
                 <label htmlFor="instance">New Post</label>
                 <input type="text" id="instance" name="instance" onChange={handleChange} value={post.instance} required/>
-                <button onClick={handleSubmit} type="submit">Post</button>
+                </div>
+                <button onClick={handleSubmit} type="submit" id="post-btn">Post</button>
+            </div>
             </form>
+            </div>
         </div>
     )
 }

@@ -2,7 +2,6 @@ import React, {useState,useEffect} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import axios from 'axios'
 
-import  './Profile.css'
 const Profile = () => {
     const history = useHistory()
     const [profile, setProfile] = useState(

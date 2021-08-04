@@ -73,34 +73,54 @@ const Register =  () => {
 
 
     return (
-        <div>
-            <h1>
-                Register
-            </h1>
+        <div className="login-regis-container">
+            <div className="login-regis-headers">
+            <h3>Register</h3>
             <p>
                 If you already have an account: <Link to={'/login'}>Login Here</Link>
             </p>
+            </div>
             <Errors msg={errorMsg}/>
-            <form className="form">
-                <label htmlFor="name">Name</label>
+            <form className="col s12 login-regis-form">
+            <div className="row">
+                <div className="input-field col s12">
+                    <label htmlFor="name">Name</label>
                     <input type="text" id="name" onChange={handleChange} value={formState.name}/>
-                <label htmlFor="username">Username</label>
+                </div>
+                <div className="input-field col s12">
+                    <label htmlFor="username">Username</label>
                     <input type="text" id="username" onChange={handleChange} value={formState.username}/>   
-                <label htmlFor="email">Email</label>
+                </div>
+                <div className="input-field col s12">
+                    <label htmlFor="email">Email</label>
                     <input type="text" id="email" onChange={handleChange} value={formState.email}/>              
-                <label htmlFor="company">company</label>
-                    <input type="text" id="company" onChange={handleChange} value={formState.company}/>
-                <label htmlFor="occupation">Occupation</label>
-                    <input type="text" id="occupation" onChange={handleChange} value={formState.occupation}/>
-                <label htmlFor="position">Position</label>
-                    <input type="text" id="position" onChange={handleChange} value={formState.position}/>
-                <label htmlFor="software">Software</label>
-                    <input type="text" id="software" onChange={handleChange} value={formState.software}/>
-                <label htmlFor="hardware">Hardware</label>
-                    <input type="text" id="hardware" onChange={handleChange} value={formState.hardware}/>
-                <label htmlFor="password">Password</label>
+                </div>
+                <div className="input-field col s12">
+                    <label htmlFor="password">Password</label>
                     <input type="text" id="password" onChange={handleChange} value={formState.password}/>
-                <button onClick={handleSubmit}type="submit">Submit</button>           
+                </div>
+                <div className="input-field col s12">
+                    <label htmlFor="company">Company</label>
+                    <input type="text" id="company" onChange={handleChange} value={formState.company}/>
+                </div>
+                <div className="input-field col s12">
+                    <label htmlFor="occupation">Occupation</label>
+                    <input type="text" id="occupation" onChange={handleChange} value={formState.occupation}/>
+                </div>
+                <div className="input-field col s12">
+                    <label htmlFor="position">Position</label>
+                    <input type="text" id="position" onChange={handleChange} value={formState.position}/>
+                </div>
+                <div className="input-field col s12">
+                    <label htmlFor="software">Software</label>
+                    <input type="text" id="software" onChange={handleChange} value={formState.software}/>
+                </div>
+                <div className="input-field col s12">
+                    <label htmlFor="hardware">Hardware</label>
+                    <input type="text" id="hardware" onChange={handleChange} value={formState.hardware}/>
+                </div>
+                <button className="btn waves-effect waves-light login-regis-btn" onClick={handleSubmit}type="submit">Register</button>  
+            </div>         
             </form>
         </div>
     )

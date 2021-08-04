@@ -53,7 +53,7 @@ const NewPost = ({setPosts}) => {
                         <div className="input-field col s12">
                         <label htmlFor="instance">Add Post</label>
                         <input type="text" id="instance" name="instance" onChange={handleChange} value={post.instance} required/>
-                        <button className="btn waves-effect waves-light" onClick={handleSubmit} type="submit">Post</button>
+                        <button className="btn waves-effect waves-light" id="post-btn" onClick={handleSubmit} type="submit">Post</button>
                         </div>
                     </div>
                 </form>

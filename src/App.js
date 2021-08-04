@@ -6,14 +6,15 @@ import M from 'materialize-css'
 
 import axios from 'axios'
 
-import Profile from './Components/Profile/Profile';
-import Signin from './Components/Signin/Signin';
-import Welcome from './Components/Welcome/Welcome';
+// import Profile from './Components/Profile/Profile';
+// import Signin from './Components/Signin/Signin';
+// import Welcome from './Components/Welcome/Welcome';
 import NewPost from './Components/NewPost';
 import UserFeed from './Components/UserFeed';
-import MainFeed from './Components/MainFeed';
+import PostsFeed from './Components/PostsFeed';
 import EditPost from './Components/EditPost';
-import SearchResults from './Components/SearchResults';
+import Explore from './Components/Explore'
+// import SearchResults from './Components/SearchResults';
 
 // Westons routes
 import Login from './Components/weston/Login'
@@ -98,15 +99,15 @@ const logout = () => {
       ( 
         <nav>
           <div className="userHeader">
-            <Link to={'/userprofile/'+userData.user.name}>Logged in as: {userData.user.name}</Link>
-            <Link to={'/posts/days'} className="posts">Posts</Link>
-            {/* <Link to={'/posts/newpost'} className="newPost">Create Post</Link> */}
-            <Link to="/explore" className="explore">Explore</Link>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              {/* <li><Link to="/posts/days" className="postsandactivities">Posts and Activity</Link></li> */}
-              {/* <li><Link to="/signin">Sign in</Link></li> */}
-            </ul>
-            <Link to={'/logout'} onClick={logout} className="modal-trigger" href="#modal1">Logout</Link>
+            <div className="nav-left">
+              <Link to='/posts/days' className="nav-item">Posts</Link>
+              <Link to="/explore" className="nav-item">Explore</Link>
+            </div>
+            <div className="nav-right">
+              <Link to={'/userprofile/'+userData.user.name} className="nav-item">Logged in as: {userData.user.name}</Link>
+              <Link to={'/logout'} onClick={logout} className="nav-item">Logout</Link>
+            </div>
+            {/* <Link to={'/logout'} onClick={logout} className="modal-trigger" href="#modal1">Logout</Link> */}
             {/* <div id="modal1" className="modal">
               <div className="modal-content">
                 <h4>Modal Header</h4>
@@ -120,9 +121,11 @@ const logout = () => {
         </nav> 
       ) :
       ( 
-        <nav className="userHeader"> 
-          <Link to={'/login'}>Login</Link>
-          <Link to={'/register'}>Register</Link>
+        <nav className="userHeader">
+          <div className="nav-right">
+          <Link to={'/login'} className="nav-item">Login</Link>
+          <Link to={'/register'} className="nav-item">Register</Link>
+          </div>
         </nav>
       )
     }
@@ -130,12 +133,12 @@ const logout = () => {
     <div className="App">
   
       <main>
+      <Route exact path='/userprofile/:user' component={UserProfile}/>
+      <Route exact path='/explore' component={Explore} />
+      <Route exact path="/posts/days" component={PostsFeed} />
       {/* <Route exact path='/signin' component={Signin} /> */}
       {/* <Route exact path='/welcome' component={Welcome} /> */}
-      <Route exact path='/userprofile/:user' component={UserProfile}/>
       {/* <Route exact path='/signup' component={Profile} />  */}
-      <Route exact path='/explore' component={MainFeed} />
-      <Route exact path="/posts/days" component={UserFeed} />
       <Route
           exact path="/posts/edit/:id"
           render={routerProps => (
@@ -143,13 +146,13 @@ const logout = () => {
             )} />
 
       <Route path="/register" exact component={Register}/>
-      {/* <Route path="/" exact component={Users}/> */}
       <Route path='/login' exact component={Login}/>
+      <Route path='/profile/:user' exact component={UserPosts}/>
+      {/* <Route path='/loggedIn' exact component={LoggedIn}/> */}
+      {/* <Route path="/" exact component={Users}/> */}
       {/* <Route path='/logout' exact component={Logout}/> */}
-      <Route path='/loggedIn' exact component={LoggedIn}/>
       {/* <Route path='/posts/days' exact component={Posts}/> */}
       {/* <Route path='/posts/newpost' exact component={CreatePost}/> */}
-      <Route path='/profile/:user' exact component={UserPosts}/>
       </main>
     </div>
     </UserContext.Provider>
