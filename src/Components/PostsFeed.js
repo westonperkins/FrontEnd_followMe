@@ -46,7 +46,7 @@ const PostsFeed = () => {
             ) :
             (
                 <div>
-                    <p>Please Log In: <Link to="/login">Login</Link></p>
+                    <p><p>Please Log In: <Link to="/login">Login</Link></p></p>
                 </div>
             )
             }
@@ -56,19 +56,3 @@ const PostsFeed = () => {
 }
 
 export default PostsFeed
-
-
-// function deletePost(_id) {
-//     axios.delete(`http://localhost:5000/posts/${_id}`)
-//     .then(()=> {
-//         userPosts();
-//     })
-//     console.log(`deleted post with id of ${_id}`)
-// }
-
-
-                // <img src={post.imageUpload} alt=""/>
-                // <div className="edit-delete-container">
-                //     <button onClick={() => deletePost(post._id)} className="waves-effect waves-teal btn-flat" id="delete-btn">Delete</button>
-                //     <Link to={"/posts/edit/"+post._id} className="waves-effect waves-teal btn-flat">Edit</Link>
-                // </div>
