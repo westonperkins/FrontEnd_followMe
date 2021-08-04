@@ -1,15 +1,18 @@
 import React from 'react'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import axios from 'axios';
 import NewPost from './NewPost';
 import { Route, Link } from 'react-router-dom'
 import M from 'materialize-css'
 import EditPost from './EditPost';
+import { UserContext } from '../App.js'
 
 const PostsFeed = () => {
-    const [posts, setPosts] = useState([])
+    const { userData, setUserData } = useContext(UserContext)
 
-    const userPosts = useEffect(() => {
+    const [posts, setPosts] = useState([])
+    // const userPosts =
+    useEffect(() => {
         axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
@@ -29,9 +32,21 @@ const PostsFeed = () => {
     
     return (
         <div className="all-posts-container">
-            <NewPost setPosts={setPosts} />
-            <h4>Posts</h4>
-            <div>{allPosts}</div>
+            <UserContext.Provider value={{ userData, setUserData }}> 
+            {userData.user ? (
+                <div>
+                    <NewPost setPosts={setPosts} />
+                    <h4>Posts</h4>
+                    <div>{allPosts}</div>
+                </div>
+            ) :
+            (
+                <div>
+                    <p>Please Log In: <Link to="/login">Login</Link></p>
+                </div>
+            )
+            }
+            </UserContext.Provider> 
         </div>
     )
 }
