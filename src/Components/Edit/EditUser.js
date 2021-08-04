@@ -9,7 +9,7 @@ const EditUser = ({match}) => {
 
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/${match.params.username}`)
+        axios.get(`https://followmeapplicationapi.herokuapp.com/${match.params.username}`)
         // .then(res => res.data )
         .then(res => setUpdateData(res.data))
         .catch(err => console.error(err))
@@ -34,7 +34,7 @@ const EditUser = ({match}) => {
     profileImage: updateData.profileImage
 } 
     
-axios.put(`http://localhost:5000/${match.params.username}/edit`, editedUser)
+axios.put(`https://followmeapplicationapi.herokuapp.com/${match.params.username}/edit`, editedUser)
 .then(() => console.log(`updated username: "${updateData.username}" successful`) )
 .then(res => history.push(`/profile/${updateData.username}`))
 // .then(res =>  setUpdateData(res))

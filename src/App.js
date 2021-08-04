@@ -6,6 +6,13 @@ import M from 'materialize-css'
 
 import axios from 'axios'
 
+
+
+// export const url = process.env.URL === 'production' 
+//   ? 'https://followmeapplicationapi.herokuapp.com'
+//   : 'http://localhost:5000'
+
+
 // import Profile from './Components/Profile/Profile';
 // import Signin from './Components/Signin/Signin';
 // import Welcome from './Components/Welcome/Welcome';
@@ -50,14 +57,14 @@ useEffect(() => {
       token = ""
     }
 
-    const tokenResponse = await axios.post('http://localhost:5000/tokenIsValid',
+    const tokenResponse = await axios.post('https://followmeapplicationapi.herokuapp.com/tokenIsValid',
     null,
     {headers: {"auth-token": token}})
 
     console.log(tokenResponse.data)
 
     if(tokenResponse.data) {
-      const userResponse = await axios.get('http://localhost:5000/profile', 
+      const userResponse = await axios.get('https://followmeapplicationapi.herokuapp.com/profile', 
       {headers: {'auth-token': token}}
       )
       setUserData({

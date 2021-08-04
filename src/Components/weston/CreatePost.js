@@ -33,7 +33,7 @@ const CreatePost = () => {
                 postedBy: userData.user.name
             }
     
-            axios.post('http://localhost:5000/posts/newpost/', newPost, {
+            axios.post('https://followmeapplicationapi.herokuapp.com/posts/newpost/', newPost, {
                 headers: {"auth-token": userData.token}
             })
             .then((window.location = "/posts/days"))

@@ -6,7 +6,7 @@ const Users = () => {
     const [ users, setUsers ] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/', {
+        axios.get('https://followmeapplicationapi.herokuapp.com/', {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setUsers(res.data))
