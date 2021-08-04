@@ -12,7 +12,7 @@ const EditPost = ({match}) => {
     },[])
 
     const getUpdateData = () => {
-       axios.get(`http://localhost:5000/posts/${match.params.id}`)
+       axios.get(`https://followmeapplicationapi.herokuapp.com/posts/${match.params.id}`)
         // .then(res => res.json())
         .then(res => {
           console.log(res)
@@ -31,7 +31,7 @@ const EditPost = ({match}) => {
             imageUpload: updateData.imageUpload,
         };
         console.log(editedPostData, "test")
-        axios.put(`http://localhost:5000/posts/${match.params.id}/edit`, editedPostData)
+        axios.put(`https://followmeapplicationapi.herokuapp.com/posts/${match.params.id}/edit`, editedPostData)
         .then(res => {
             console.log(res)
             console.log(match.params.id)

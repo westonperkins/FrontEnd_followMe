@@ -56,7 +56,7 @@ const Profile = () => {
             hardware: profile.hardware,
             profileImage: profile.profileImage
         }
-        axios.post('http://localhost:5000/register', newUser)
+        axios.post('https://followmeapplicationapi.herokuapp.com/register', newUser)
         .then(res => history.push(`/profile/${res.data.username}`))
         // .then(res => console.log(res))
         // .then(res => setProfile(res.data))

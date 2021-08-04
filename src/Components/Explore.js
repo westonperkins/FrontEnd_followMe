@@ -9,7 +9,7 @@ const Explore = ({match}) => {
     const [profileFeed, setProfileFeed] = useState([])
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/`)
+        axios.get(`https://followmeapplicationapi.herokuapp.com/`)
         .then(res => setProfileFeed(res.data))
         .catch(console.err)
       }, [])

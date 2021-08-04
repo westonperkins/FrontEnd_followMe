@@ -32,7 +32,7 @@ const Login = () => {
                 password: formState.password
             }
             
-            const loginResponse = await axios.post('http://localhost:5000/login', newUser)
+            const loginResponse = await axios.post('https://followmeapplicationapi.herokuapp.com/login', newUser)
             setUserData({
                 token: loginResponse.data.token,
                 user: loginResponse.data.user
