@@ -23,15 +23,17 @@ const UserPosts = (props) => {
             </div>
             <h4>{props.match.params.user}'s Posts</h4> 
             {posts.map((post) => {
-                console.log(post)
+                // console.log(post + "post")
                 if(props.match.params.user === post.postedBy) {
                     return (
                         <div className="post-container">
                         <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
+                        <p className="timestamp">{post.date}</p>
+                        <hr></hr>
                         <p className="instance-text">{post.instance}</p>
                         </div>
                     )
-                } 
+                }  
             })}
         </div>
     )
