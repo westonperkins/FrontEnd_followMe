@@ -45,11 +45,11 @@ const Register =  () => {
                 software: formState.software,
                 hardware: formState.hardware,
             }
-            await axios.post('http://localhost:5000/register/', newUser)
+            await axios.post('https://followmeapplicationapi.herokuapp.com/register/', newUser)
             .then(res => console.log(res.data))
             .then(console.log(newUser.name + " has been added"))
      
-            const loginResponse = await axios.post('http://localhost:5000/login', newUser)
+            const loginResponse = await axios.post('https://followmeapplicationapi.herokuapp.com/login', newUser)
             console.log(loginResponse.data)
         
             setUserData({
