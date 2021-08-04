@@ -15,13 +15,17 @@ const PostsFeed = () => {
         })
         .then(res => setPosts(res.data))
     }, [])
-    
+
     
     let allPosts = posts.map(post => {
         return (
             <div className="post-container">
+            <div className="top-post">
+            <div className="name-time">
                 <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
-                <p>{post.date}</p>
+                <p className="timestamp">{post.date}</p>
+            </div>
+            </div>
                 <p className="instance-text">{post.instance}</p>
             </div>
         )
