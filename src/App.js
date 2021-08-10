@@ -8,10 +8,6 @@ import axios from 'axios'
 
 
 
-// export const url = process.env.URL === 'production' 
-//   ? 'https://followmeapplicationapi.herokuapp.com'
-//   : 'http://localhost:5000'
-
 
 // import Profile from './Components/Profile/Profile';
 // import Signin from './Components/Signin/Signin';
@@ -27,13 +23,13 @@ import Explore from './Components/Explore'
 import Login from './Components/weston/Login'
 import Register from './Components/weston/Register/Register'
 import Users from './Components/weston/Users'
-import LoggedIn from './Components/weston/LoggedIn'
+import LoggedIn from './Components/NotUsing/LoggedIn'
 import Logout from './Components/weston/Logout'
 import Posts from './Components/weston/Posts'
 import CreatePost from './Components/weston/CreatePost'
 import UserProfile from './Components/weston/UserProfile'
 import UserPosts from './Components/weston/UserPosts'
-import LogoutCheckpoint from './Components/weston/LogoutCheckpoint'
+import LogoutCheckpoint from './Components/NotUsing/LogoutCheckpoint'
 // ____________
 
 export const UserContext = createContext()
@@ -114,16 +110,6 @@ const logout = () => {
               <Link to={'/userprofile/'+userData.user.name} className="nav-item">Logged in as: {userData.user.name}</Link>
               <Link to={'/logout'} onClick={logout} className="nav-item">Logout</Link>
             </div>
-            {/* <Link to={'/logout'} onClick={logout} className="modal-trigger" href="#modal1">Logout</Link> */}
-            {/* <div id="modal1" className="modal">
-              <div className="modal-content">
-                <h4>Modal Header</h4>
-                  <p>A bunch of text</p>
-              </div>
-              <div className="modal-footer">
-                <a href="#!" className="modal-close waves-effect waves-green btn-flat">Agree</a>
-              </div>
-            </div> */}
           </div>
         </nav> 
       ) :
@@ -140,12 +126,10 @@ const logout = () => {
     <div className="App">
   
       <main>
+      <Route exact path='/' component={Login}/>
       <Route exact path='/userprofile/:user' component={UserProfile}/>
       <Route exact path='/explore' component={Explore} />
       <Route exact path="/posts/days" component={PostsFeed} />
-      {/* <Route exact path='/signin' component={Signin} /> */}
-      {/* <Route exact path='/welcome' component={Welcome} /> */}
-      {/* <Route exact path='/signup' component={Profile} />  */}
       <Route
           exact path="/posts/edit/:id"
           render={routerProps => (
@@ -155,11 +139,6 @@ const logout = () => {
       <Route path="/register" exact component={Register}/>
       <Route path='/login' exact component={Login}/>
       <Route path='/profile/:user' exact component={UserPosts}/>
-      {/* <Route path='/loggedIn' exact component={LoggedIn}/> */}
-      {/* <Route path="/" exact component={Users}/> */}
-      {/* <Route path='/logout' exact component={Logout}/> */}
-      {/* <Route path='/posts/days' exact component={Posts}/> */}
-      {/* <Route path='/posts/newpost' exact component={CreatePost}/> */}
       </main>
     </div>
     </UserContext.Provider>

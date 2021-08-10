@@ -8,9 +8,7 @@ const YourProfile = ({match}) => {
 
     useEffect(() => {
       // console.log(persons.username);
-      axios.get(`http://localhost:5000/${match.params.username}`)
-      // axios.get('http://localhost:5000/')
-      // .then(res => res.json())
+      axios.get(`https://followmeapplicationapi.herokuapp.com/${match.params.username}`)
       .then(res => setPersons(res.data))
       .catch(console.err)
     }, [])
