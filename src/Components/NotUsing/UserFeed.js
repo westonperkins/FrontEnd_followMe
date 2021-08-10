@@ -9,22 +9,6 @@ import EditPost from '../EditPost';
 const UserFeed = () => {
     const [posts, setPosts] = useState([])
 
-    // useEffect(() => {
-    //     fetchAllPosts()
-    // }, [])
-
-    // const fetchAllPosts = () => {
-    //     fetch('http://localhost:5000/posts/days')
-    //       .then(res => res.json())
-    //       .then(res => {
-    //         console.log(res)
-    //         setPosts(res)
-    //       })
-    //       .catch(err => {
-    //         console.error(err);
-    //       });
-    //   }
-
     const userPosts = useEffect(() => {
         axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
             headers: {"auth-token": localStorage.getItem("auth-token")}

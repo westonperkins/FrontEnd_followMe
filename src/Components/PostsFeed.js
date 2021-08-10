@@ -11,7 +11,7 @@ const PostsFeed = () => {
     const { userData, setUserData } = useContext(UserContext)
 
     const [posts, setPosts] = useState([])
-    // const userPosts =
+
     useEffect(() => {
         axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
             headers: {"auth-token": localStorage.getItem("auth-token")}
@@ -38,7 +38,7 @@ const PostsFeed = () => {
         <div className="all-posts-container">
             <UserContext.Provider value={{ userData, setUserData }}> 
             {userData.user ? (
-                <div>
+                <div key={userData}>
                     <NewPost setPosts={setPosts} />
                     <h4>Posts</h4>
                     <div>{allPosts}</div>
