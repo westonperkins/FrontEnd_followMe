@@ -46,8 +46,6 @@ const SearchBar = ({placeholder, data}) => {
                         <div target="_blank">
                             {value.name === userData.user.name ?
                               <Link to={"/userprofile/"+userData.user.name}>
-                              {console.log(value.name)}
-                              {console.log(userData.user.username)}
                               <div className="card horizontal">
                                   <div className="card-stacked">
                                       <div className="card-content">
