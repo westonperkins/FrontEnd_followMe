@@ -9,7 +9,7 @@ const EditPost = ({match}) => {
 
     useEffect(() => {
         getUpdateData()
-    },[])
+    }, [])
 
     const getUpdateData = () => {
        axios.get(`https://followmeapplicationapi.herokuapp.com/posts/${match.params.id}`)

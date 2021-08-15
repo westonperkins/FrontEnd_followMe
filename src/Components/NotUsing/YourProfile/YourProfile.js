@@ -49,9 +49,6 @@ const YourProfile = ({match}) => {
                   <p><em style={userStyle}>position</em>: {person.position}</p>
                   <p><em style={userStyle}>software</em>: {person.software.map(p => <li key={p} value={p}>{p}</li> )}</p>
                   <p><em style={userStyle}>hardware</em>: {person.hardware.map(b => <li key={b} value={b}>{b}</li> )}</p>
-
-                 
-          
             </div>
               )
           ) }
