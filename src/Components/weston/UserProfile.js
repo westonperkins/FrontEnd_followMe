@@ -31,12 +31,10 @@ const UserProfile = (props) => {
             <UserContext.Provider value={{ userData, setUserData }}>  
             {userData.user ? (
             <div>
-            <h4>{userData.user.name}'s Profile</h4>
+            <h4>{userData.user.name}</h4>
             <div className="profile-container">
                 <p className="profile-headers">Username:  
                     <span className="profile-details" id="username-text-only"> {userData.user.username}</span></p>
-                {/* <p className="profile-headers">Name:  
-                    <span className="profile-details"> {userData.user.name}</span></p> */}
                 <p className="profile-headers">Email:  
                     <span className="profile-details"> {userData.user.email}</span></p>
                 <p className="profile-headers">Company:  
@@ -51,7 +49,7 @@ const UserProfile = (props) => {
                     <span className="profile-details"> {userData.user.software}</span></p>
             </div>
             <div>
-            <h4>{props.match.params.user}'s Posts</h4> 
+            <h4>Posts</h4> 
             {posts.map((post) => {
                 // console.log(post)
                 if(props.match.params.user === post.postedBy) {

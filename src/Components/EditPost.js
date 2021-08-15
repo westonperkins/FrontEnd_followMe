@@ -9,7 +9,7 @@ const EditPost = ({match}) => {
 
     useEffect(() => {
         getUpdateData()
-    },[])
+    }, [])
 
     const getUpdateData = () => {
        axios.get(`http://localhost:5000/posts/${match.params.id}`)
