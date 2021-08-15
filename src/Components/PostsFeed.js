@@ -20,28 +20,50 @@ const PostsFeed = () => {
     }, [])
 
     
-    let allPosts = posts.map(post => {
-        return (
-            <div className="post-container">
-            <div className="top-post">
-            <div className="name-time">
-                <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
-                <p className="timestamp">{new Date(post.date).toDateString()}</p>
-            </div>
-            </div>
-                <p className="instance-text">{post.instance}</p>
-            </div>
-        )
-    })
-    
+
+    // let allPosts = posts.map(post => {
+    //     return (
+    //         <div className="post-container">
+    //         <div className="top-post">
+    //         <div className="name-time">
+    //             <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
+    //             <p className="timestamp">{post.date}</p>
+    //         </div>
+    //         </div>
+    //             <p className="instance-text">{post.instance}</p>
+    //         </div>
+    //     )
+    // })
+
+
     return (
         <div className="all-posts-container">
             <UserContext.Provider value={{ userData, setUserData }}> 
+            {console.log(userData.user)}
             {userData.user ? (
-                <div key={userData}>
+                <div key={userData.user}>
                     <NewPost setPosts={setPosts} />
                     <h4>Posts</h4>
-                    <div>{allPosts}</div>
+                    <div>{
+                    posts.map(post => {
+                        return (
+                            <div className="post-container">
+                            <div className="top-post">
+                            <div className="name-time">
+                                {userData.user.name === post.postedBy ?
+                                <Link to={`/userprofile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
+                                :
+                                <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
+                                }
+                                <p className="timestamp">{post.date}</p>
+                            </div>
+                            </div>
+                                <p className="instance-text">{post.instance}</p>
+                            </div>
+                        )
+                    })
+
+                    }</div>
                 </div>
             ) :
             (
