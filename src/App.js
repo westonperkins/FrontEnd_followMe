@@ -2,7 +2,7 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import React, { createContext, useState, useEffect } from 'react'
-import M from 'materialize-css'
+// import M from 'materialize-css'
 
 import axios from 'axios'
 
@@ -12,8 +12,8 @@ import axios from 'axios'
 // import Profile from './Components/Profile/Profile';
 // import Signin from './Components/Signin/Signin';
 // import Welcome from './Components/Welcome/Welcome';
-import NewPost from './Components/NewPost';
-import UserFeed from './Components/UserFeed';
+// import NewPost from './Components/NewPost';
+// import UserFeed from './Components/UserFeed';
 import PostsFeed from './Components/PostsFeed';
 import EditPost from './Components/EditPost';
 import Explore from './Components/Explore'
@@ -22,14 +22,14 @@ import Explore from './Components/Explore'
 // Westons routes
 import Login from './Components/weston/Login'
 import Register from './Components/weston/Register/Register'
-import Users from './Components/weston/Users'
-import LoggedIn from './Components/NotUsing/LoggedIn'
-import Logout from './Components/weston/Logout'
-import Posts from './Components/weston/Posts'
-import CreatePost from './Components/weston/CreatePost'
+// import Users from './Components/weston/Users'
+// import LoggedIn from './Components/NotUsing/LoggedIn'
+// import Logout from './Components/weston/Logout'
+// import Posts from './Components/weston/Posts'
+// import CreatePost from './Components/weston/CreatePost'
 import UserProfile from './Components/weston/UserProfile'
 import UserPosts from './Components/weston/UserPosts'
-import LogoutCheckpoint from './Components/NotUsing/LogoutCheckpoint'
+// import LogoutCheckpoint from './Components/NotUsing/LogoutCheckpoint'
 // ____________
 
 export const UserContext = createContext()
