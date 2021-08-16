@@ -2,6 +2,7 @@ import React, {useState, useContext, useEffect} from 'react'
 import axios from 'axios'
 import {UserContext} from '../App'
 import Errors from './weston/Errors'
+import {API} from '../App'
 
 const NewPost = ({setPosts}) => {
     const {userData, setUserData} = useContext(UserContext)
@@ -31,7 +32,7 @@ const NewPost = ({setPosts}) => {
                 postedBy: userData.user.name
             }
     
-            axios.post('https://followmeapplicationapi.herokuapp.com/posts/newpost/', newPost, {
+            axios.post(`${API}/posts/newpost/`, newPost, {
                 headers: {"auth-token": localStorage.getItem("auth-token")}
             })
             // .then((window.location = "/posts/days"))

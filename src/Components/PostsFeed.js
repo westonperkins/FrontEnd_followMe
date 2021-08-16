@@ -3,9 +3,10 @@ import { useState, useEffect, useContext } from 'react'
 import axios from 'axios';
 import NewPost from './NewPost';
 import { Link } from 'react-router-dom'
+import { UserContext } from '../App.js'
+import {API} from '../App'
 // import M from 'materialize-css'
 // import EditPost from './EditPost';
-import { UserContext } from '../App.js'
 
 const PostsFeed = () => {
     const { userData, setUserData } = useContext(UserContext)
@@ -13,7 +14,7 @@ const PostsFeed = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
-        axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
+        axios.get(`${API}/posts/days`, {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setPosts(res.data))
