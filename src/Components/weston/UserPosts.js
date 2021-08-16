@@ -10,7 +10,7 @@ const UserPosts = (props) => {
     // const [profiles, setProfiles] = useState([])
 
     useEffect(() => {
-        axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
+        axios.get('http://localhost:5000/posts/days', {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setPosts(res.data))

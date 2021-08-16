@@ -26,14 +26,14 @@ const UserFeed = () => {
     //   }
 
     const userPosts = useEffect(() => {
-        axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
+        axios.get('http://localhost:5000/posts/days', {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setPosts(res.data))
     }, [])
     
     function deletePost(_id) {
-        axios.delete(`https://followmeapplicationapi.herokuapp.com/posts/${_id}`)
+        axios.delete(`http://localhost:5000/posts/${_id}`)
         .then(()=> {
             userPosts();
         })
@@ -45,7 +45,7 @@ const UserFeed = () => {
             <div className="post-container">
                 <Link to={`/profile/${post.postedBy}`} name={post.postedBy}>{post.postedBy}</Link>
                 <p className="instance-text">{post.instance}</p>
-                <p>{post.date}</p>
+                <p className="timestamp">{new Date(post.date).toDateString()}</p>
                 {/* <img src={post.imageUpload} alt=""/> */}
                 <div className="edit-delete-container">
                     <button onClick={() => deletePost(post._id)} className="waves-effect waves-teal btn-flat" id="delete-btn">Delete</button>

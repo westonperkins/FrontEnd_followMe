@@ -13,7 +13,7 @@ const PostsFeed = () => {
     const [posts, setPosts] = useState([])
     // const userPosts =
     useEffect(() => {
-        axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
+        axios.get('http://localhost:5000/posts/days', {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setPosts(res.data))
@@ -26,7 +26,7 @@ const PostsFeed = () => {
             <div className="top-post">
             <div className="name-time">
                 <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
-                <p className="timestamp">{post.date}</p>
+                <p className="timestamp">{new Date(post.date).toDateString()}</p>
             </div>
             </div>
                 <p className="instance-text">{post.instance}</p>

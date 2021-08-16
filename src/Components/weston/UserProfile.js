@@ -9,7 +9,7 @@ const UserProfile = (props) => {
     const [posts, setPosts ] = useState([])
 
     useEffect(() => {
-        axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
+        axios.get('http://localhost:5000/posts/days', {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setPosts(res.data))
@@ -18,7 +18,7 @@ const UserProfile = (props) => {
     console.log(userData.user)
 
     function deletePost(_id) {
-        axios.delete(`https://followmeapplicationapi.herokuapp.com/posts/${_id}`)
+        axios.delete(`http://localhost:5000/posts/${_id}`)
         .then((post)=> {
             console.log(post)
             setPosts(posts.filter(post => post._id !== _id))
