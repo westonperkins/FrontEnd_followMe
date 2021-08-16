@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import NewPost from './NewPost';
+import NewPost from '../NewPost';
 import { Route, Link } from 'react-router-dom'
 import M from 'materialize-css'
-import EditPost from './EditPost';
+import EditPost from '../EditPost';
 
 const UserFeed = () => {
     const [posts, setPosts] = useState([])
@@ -26,14 +26,14 @@ const UserFeed = () => {
     //   }
 
     const userPosts = useEffect(() => {
-        axios.get('http://localhost:5000/posts/days', {
+        axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setPosts(res.data))
     }, [])
     
     function deletePost(_id) {
-        axios.delete(`http://localhost:5000/posts/${_id}`)
+        axios.delete(`https://followmeapplicationapi.herokuapp.com/posts/${_id}`)
         .then(()=> {
             userPosts();
         })

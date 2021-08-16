@@ -1,7 +1,7 @@
 import React, {useState, useContext, useEffect} from 'react'
 import axios from 'axios'
 import {UserContext} from '../../App'
-import Errors from './Errors'
+import Errors from '../weston/Errors'
 
 
 

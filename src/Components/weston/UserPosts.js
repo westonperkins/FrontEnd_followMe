@@ -10,7 +10,7 @@ const UserPosts = (props) => {
     // const [profiles, setProfiles] = useState([])
 
     useEffect(() => {
-        axios.get('http://localhost:5000/posts/days', {
+        axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setPosts(res.data))
@@ -28,6 +28,7 @@ const UserPosts = (props) => {
                     return (
                         <div className="post-container">
                         <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
+                        <p className="timestamp">{new Date(post.date).toDateString()}</p>
                         <p className="instance-text">{post.instance}</p>
                         </div>
                     )

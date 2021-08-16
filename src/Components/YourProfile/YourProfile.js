@@ -8,7 +8,7 @@ const YourProfile = ({match}) => {
 
     useEffect(() => {
       // console.log(persons.username);
-      axios.get(`http://localhost:5000/${match.params.username}`)
+      axios.get(`https://followmeapplicationapi.herokuapp.com/${match.params.username}`)
       // axios.get('http://localhost:5000/')
       // .then(res => res.json())
       .then(res => setPersons(res.data))
@@ -17,7 +17,7 @@ const YourProfile = ({match}) => {
 
     const fetchProfile = () => {
     
-      axios.get(`http://localhost:5000/`)
+      axios.get(`https://followmeapplicationapi.herokuapp.com/`)
       .then(res => res.data)
       .then(res => setPersons(res))
       .catch(err => {console.error(err)})
@@ -28,7 +28,7 @@ const YourProfile = ({match}) => {
     e.preventDefault()
     console.log('delete clicked');
     
-    axios.delete(`http://localhost:5000/${match.params.username}`)
+    axios.delete(`https://followmeapplicationapi.herokuapp.com/${match.params.username}`)
     .then(() => {fetchProfile()})
     .then(() => console.log(`deleted username: "${match.params.username}" successful`) )
     .catch(err => {console.error(err)})
