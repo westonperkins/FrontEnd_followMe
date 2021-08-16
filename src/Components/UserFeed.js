@@ -5,12 +5,13 @@ import NewPost from './NewPost';
 import { Route, Link } from 'react-router-dom'
 import M from 'materialize-css'
 import EditPost from './EditPost';
+import {API} from '../App'
 
 const UserFeed = () => {
     const [posts, setPosts] = useState([])
 
     const userPosts = useEffect(() => {
-        axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
+        axios.get(`${API}/posts/days`, {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setPosts(res.data))

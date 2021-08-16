@@ -6,6 +6,7 @@ import axios from 'axios'
 import M from 'materialize-css'
 
 
+
 const SearchBar = ({placeholder, data}) => {
     const { userData, setUserData } = useContext(UserContext)
     const [filteredData, setFilteredData] = useState([])

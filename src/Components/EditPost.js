@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { Route, Link } from 'react-router-dom'
 import axios from 'axios';
 import M from 'materialize-css'
+import {API} from '../App'
 
 const EditPost = ({match}) => {
     const [updateData, setUpdateData] = useState([])
@@ -12,7 +13,7 @@ const EditPost = ({match}) => {
     }, [])
 
     const getUpdateData = () => {
-       axios.get(`https://followmeapplicationapi.herokuapp.com/posts/${match.params.id}`)
+       axios.get(`${API}/posts/${match.params.id}`)
         // .then(res => res.json())
         .then(res => {
           console.log(res)
@@ -31,7 +32,7 @@ const EditPost = ({match}) => {
             imageUpload: updateData.imageUpload,
         };
         console.log(editedPostData, "test")
-        axios.put(`https://followmeapplicationapi.herokuapp.com/posts/${match.params.id}/edit`, editedPostData)
+        axios.put(`${API}/posts/${match.params.id}/edit`, editedPostData)
         .then(res => {
             console.log(res)
             console.log(match.params.id)

@@ -5,6 +5,7 @@ import axios from 'axios';
 import M from 'materialize-css'
 import SearchBar from './SearchBar';
 import { UserContext } from '../App.js'
+import {API} from '../App'
 
 const Explore = ({match}) => {
 
@@ -13,7 +14,7 @@ const Explore = ({match}) => {
     const [profileFeed, setProfileFeed] = useState([])
 
     useEffect(() => {
-        axios.get(`https://followmeapplicationapi.herokuapp.com/`)
+        axios.get(`${API}`)
         .then(res => setProfileFeed(res.data))
         .catch(console.err)
       }, [])
