@@ -234,3 +234,12 @@ h3 {
 
 
 /*********************************/
+/* UserPosts.js */
+
+.profileIcons {
+  display: flex;
+}
+
+.profileIcons span {
+  padding-left: 1rem;
+}

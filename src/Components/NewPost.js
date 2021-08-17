@@ -35,7 +35,7 @@ const NewPost = ({setPosts}) => {
             axios.post(`${API}/posts/newpost/`, newPost, {
                 headers: {"auth-token": localStorage.getItem("auth-token")}
             })
-            // .then((window.location = "/posts/days"))
+            .then((window.location = "/posts/days"))
             .then(res => console.log(res.data))
             
             console.log(post.instance)

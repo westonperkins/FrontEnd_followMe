@@ -78,7 +78,7 @@ const UserProfile = (props) => {
                 <p>Please Log In: <Link to="/login">Login</Link></p>
                 </div>
             )}
-             </UserContext.Provider> 
+            </UserContext.Provider> 
         </div>
     )
 }
