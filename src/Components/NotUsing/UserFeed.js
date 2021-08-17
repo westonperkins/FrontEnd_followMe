@@ -1,10 +1,10 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import NewPost from './NewPost';
+import NewPost from '../NewPost';
 import { Route, Link } from 'react-router-dom'
 import M from 'materialize-css'
-import EditPost from './EditPost';
+import EditPost from '../EditPost';
 
 const UserFeed = () => {
     const [posts, setPosts] = useState([])
@@ -45,7 +45,7 @@ const UserFeed = () => {
             <div className="post-container">
                 <Link to={`/profile/${post.postedBy}`} name={post.postedBy}>{post.postedBy}</Link>
                 <p className="instance-text">{post.instance}</p>
-                <p>{post.date}</p>
+                <p className="timestamp">{new Date(post.date).toDateString()}</p>
                 {/* <img src={post.imageUpload} alt=""/> */}
                 <div className="edit-delete-container">
                     <button onClick={() => deletePost(post._id)} className="waves-effect waves-teal btn-flat" id="delete-btn">Delete</button>

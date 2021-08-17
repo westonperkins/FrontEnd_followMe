@@ -12,7 +12,7 @@ const EditPost = ({match}) => {
     },[])
 
     const getUpdateData = () => {
-       axios.get(`https://followmeapplicationapi.herokuapp.com/posts/${match.params.id}`)
+       axios.get(`http://localhost:5000/posts/${match.params.id}`)
         // .then(res => res.json())
         .then(res => {
           console.log(res)
@@ -31,7 +31,7 @@ const EditPost = ({match}) => {
             imageUpload: updateData.imageUpload,
         };
         console.log(editedPostData, "test")
-        axios.put(`https://followmeapplicationapi.herokuapp.com/posts/${match.params.id}/edit`, editedPostData)
+        axios.put(`http://localhost:5000/posts/${match.params.id}/edit`, editedPostData)
         .then(res => {
             console.log(res)
             console.log(match.params.id)
@@ -46,15 +46,17 @@ const EditPost = ({match}) => {
 
     return (
 
-        <div id="create-post-container" className="row">
+        <div className="row update-post-container">
             {updatePost ? 
             <form onSubmit={updatePost} className="col s12">
                 <div className="row">
                 <div className="input-field col s12">
                 <label htmlFor="instance"/>
                 <textarea id="instance" className="materialize-textarea" onChange={handleChange}>{updateData.instance}</textarea>
-                <a href="/posts/days" className="btn waves-effect waves-light" id="x">Cancel</a>
-                <button type="submit" className="btn waves-effect waves-light">Update</button>
+                <div className="update-btn-container">
+                    <a href="/posts/days" className="btn waves-effect waves-light" id="cancel-btn">Cancel</a>
+                    <button type="submit" className="btn waves-effect waves-light">Update</button>
+                </div>
                 </div>
             </div>
             </form> : null

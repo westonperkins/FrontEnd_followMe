@@ -17,7 +17,7 @@ import axios from 'axios'
 // import Signin from './Components/Signin/Signin';
 // import Welcome from './Components/Welcome/Welcome';
 import NewPost from './Components/NewPost';
-import UserFeed from './Components/UserFeed';
+import UserFeed from './Components/NotUsing/UserFeed';
 import PostsFeed from './Components/PostsFeed';
 import EditPost from './Components/EditPost';
 import Explore from './Components/Explore'
@@ -26,11 +26,11 @@ import Explore from './Components/Explore'
 // Westons routes
 import Login from './Components/weston/Login'
 import Register from './Components/weston/Register/Register'
-import Users from './Components/weston/Users'
+import Users from './Components/NotUsing/Users'
 import LoggedIn from './Components/weston/LoggedIn'
 import Logout from './Components/weston/Logout'
-import Posts from './Components/weston/Posts'
-import CreatePost from './Components/weston/CreatePost'
+import Posts from './Components/NotUsing/Posts'
+import CreatePost from './Components/NotUsing/CreatePost'
 import UserProfile from './Components/weston/UserProfile'
 import UserPosts from './Components/weston/UserPosts'
 import LogoutCheckpoint from './Components/weston/LogoutCheckpoint'
