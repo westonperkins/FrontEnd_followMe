@@ -2,6 +2,7 @@
 import './App.css'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom"
 import React, { createContext, useState, useEffect } from 'react'
+import RingLoader from "react-spinners/RingLoader"
 
 import axios from 'axios'
 
@@ -44,6 +45,22 @@ export const API = process.env.REACT_APP_ENV === 'production'
 export const UserContext = createContext()
 
 function App() {
+
+// loading---------------------
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true)
+    setTimeout(() => {
+      setLoading(false)
+    }, 400 )
+    // window.onload(false)
+
+  }, [])
+
+
+
+
 
   const initialState = {instance:'',imageUpload: ''};
   const [postData, setPostData] = useState(initialState)
@@ -98,8 +115,7 @@ function App() {
 
     <Router>  
     <UserContext.Provider value={{ userData, setUserData }}>  
-
-    {userData.user ? 
+    {/* {userData.user ? 
       ( 
         <nav>
           <div className="userHeader">
@@ -113,7 +129,8 @@ function App() {
             </div>
           </div>
         </nav> 
-      ) :
+      ) 
+      :
       ( 
         <nav className="userHeader">
           <div className="nav-right">
@@ -122,26 +139,66 @@ function App() {
           </div>
         </nav>
       )
-    }
-
+    } */}
+    
     <div className="App">
-  
-      <main>
-      <Route exact path='/' component={Login}/>
-      <Route exact path='/userprofile/:user' component={UserProfile}/>
-      <Route exact path='/explore' component={Explore} />
-      <Route exact path="/posts/days" component={PostsFeed} />
-      <Route
-          exact path="/posts/edit/:id"
-          render={routerProps => (
-            <EditPost match={routerProps.match}/>
-            )} />
+    {
+      loading ?
 
-      <Route path="/register" exact component={Register}/>
-      <Route path='/login' exact component={Login}/>
-      <Route path='/profile/:user' exact component={UserPosts}/>
-      </main>
+      <div className="loader">
+      <RingLoader 
+      // css={override}
+      size={60}
+      color={"#D0021B"}
+      loading={loading}
+      />
+      </div>
+      :
+      <div>
+        {userData.user ? 
+          ( 
+            <nav>
+              <div className="userHeader">
+                <div className="nav-left">
+                  <Link to='/posts/days' className="nav-item">Posts</Link>
+                  <Link to="/explore" className="nav-item">Explore</Link>
+                </div>
+                <div className="nav-right">
+                  <Link to={'/userprofile/'+userData.user.name} className="nav-item">Logged in as: {userData.user.name}</Link>
+                  <Link to={'/logout'} onClick={logout} className="nav-item">Logout</Link>
+                </div>
+              </div>
+            </nav> 
+          ) 
+          :
+          ( 
+            <nav className="userHeader">
+              <div className="nav-right">
+              <Link to={'/login'} className="nav-item">Login</Link>
+              <Link to={'/register'} className="nav-item">Register</Link>
+              </div>
+            </nav>
+          )
+        }
+        <main>
+        <Route exact path='/' component={Login}/>
+        <Route exact path='/userprofile/:user' component={UserProfile}/>
+        <Route exact path='/explore' component={Explore} />
+        <Route exact path="/posts/days" component={PostsFeed} />
+        <Route
+            exact path="/posts/edit/:id"
+            render={routerProps => (
+              <EditPost match={routerProps.match}/>
+              )} />
+
+        <Route path="/register" exact component={Register}/>
+        <Route path='/login' exact component={Login}/>
+        <Route path='/profile/:user' exact component={UserPosts}/>
+        </main>
+      </div>
+    }
     </div>
+
     </UserContext.Provider>
     </Router>
   );
