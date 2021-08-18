@@ -3,6 +3,7 @@ import axios from 'axios'
 import {UserContext} from '../App'
 import Errors from './weston/Errors'
 import {API} from '../App'
+import PostsFeed from './PostsFeed'
 
 const NewPost = ({setPosts}) => {
     const {userData, setUserData} = useContext(UserContext)
@@ -58,7 +59,8 @@ const NewPost = ({setPosts}) => {
                         </div>
                     </div>
                 </form>
-            </div>
+            {/* <PostsFeed/> */}
+        </div>
         
         )
     }
