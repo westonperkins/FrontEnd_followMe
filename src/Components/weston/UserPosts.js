@@ -1,16 +1,27 @@
-import React, { useContext, useState, useEffect } from 'react'
-import { UserContext } from '../../App'
+import React, { useState, useEffect } from 'react'
+// import { UserContext } from '../../App'
 import axios from 'axios'
+import {API} from '../../App'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../../App'
+import '../../App.css'
 
 const UserPosts = (props) => {
-    console.log(props.match.params.user)
-
-    const [ posts, setPosts ] = useState([])
-    // const [profiles, setProfiles] = useState([])
-
+    
+    const [ userCredentials, setUserCredentials ] = useState([])
+    
     useEffect(() => {
-        axios.get('https://followmeapplicationapi.herokuapp.com/posts/days', {
+        axios.get(`${API}/profile/${props.match.params.user}`, {
+            headers: {"auth-token": localStorage.getItem("auth-token")}
+        })
+        .then(res => setUserCredentials(res.data))
+        // .then(res => console.log(res.data))
+    }, [])
+    
+    const [ posts, setPosts ] = useState([])
+    
+    useEffect(() => {
+        axios.get(`${API}/posts/days`, {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setPosts(res.data))
@@ -18,23 +29,33 @@ const UserPosts = (props) => {
 
     return (
         <div className="userprof-container">
+            <UserContext.Provider value={{ userCredentials, setUserCredentials }}>  
             <div>
-            <p>{props.match.params.user}'s Profile</p>
+            {/* {console.log(userCredentials + "uC")} */}
+            {userCredentials.length > 0 && (<h3>{userCredentials[0].name}</h3>)}
+            {userCredentials.length > 0 && (<p>@{userCredentials[0].username}</p>)}
+            {userCredentials.length > 0 && (<p>Currently works at: <span><b>{userCredentials[0].company}</b></span> as a <span><b>{userCredentials[0].occupation}</b></span></p>)}
+            {userCredentials.length > 0 && (<p>Works at: <span><b>{userCredentials[0].company}</b></span></p>)}
+            {userCredentials.length > 0 && (<div className="profileIcons"><i className="material-icons">email</i><span><b>{userCredentials[0].email}</b></span></div>)}
             </div>
-            <h4>{props.match.params.user}'s Posts</h4> 
+            <hr></hr>
+            {/* {console.log(props)}
+            {console.log(props.match.params.user)} */}
+            {/* <h4>{props.match.params.user}'s Posts</h4>  */}
             {posts.map((post) => {
-                // console.log(post + "post")
+
                 if(props.match.params.user === post.postedBy) {
                     return (
                         <div className="post-container">
                         <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
-                        <p className="timestamp">{post.date}</p>
+                        <p className="timestamp">{new Date(post.date).toDateString()}</p>
                         <hr></hr>
                         <p className="instance-text">{post.instance}</p>
                         </div>
                     )
                 }  
             })}
+            </UserContext.Provider> 
         </div>
     )
 }

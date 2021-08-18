@@ -2,6 +2,8 @@ import React, {useState, useContext, useEffect} from 'react'
 import axios from 'axios'
 import {UserContext} from '../App'
 import Errors from './weston/Errors'
+import {API} from '../App'
+import PostsFeed from './PostsFeed'
 
 const NewPost = ({setPosts}) => {
     const {userData, setUserData} = useContext(UserContext)
@@ -16,7 +18,7 @@ const NewPost = ({setPosts}) => {
 
     const handleChange = (e) => {
         setPost({ ...post, [e.target.id]: e.target.value })
-        console.log(post)
+        // console.log(post)
     }
 
     const handleSubmit =  (e) => {
@@ -27,17 +29,17 @@ const NewPost = ({setPosts}) => {
 
             const newPost = {
                 instance: post.instance,
-                imageUpload: post.imageUpload,
+                // imageUpload: post.imageUpload,
                 postedBy: userData.user.name
             }
     
-            axios.post('https://followmeapplicationapi.herokuapp.com/posts/newpost/', newPost, {
-                headers: {"auth-token": userData.token}
+            axios.post(`${API}/posts/newpost/`, newPost, {
+                headers: {"auth-token": localStorage.getItem("auth-token")}
             })
             .then((window.location = "/posts/days"))
             .then(res => console.log(res.data))
             
-            console.log(post)
+            console.log(post.instance)
 
             setPost({
                 instance: "",
@@ -48,16 +50,17 @@ const NewPost = ({setPosts}) => {
     return (
         <div id="create-post-container" className="row">
             <Errors msg={errorMsg}/>
-                <form className="col s12">
+                <form className="col s12" onSubmit={handleSubmit}>
                     <div className="row">
                         <div className="input-field col s12">
                         <label htmlFor="instance">Add Post</label>
                         <input type="text" id="instance" name="instance" onChange={handleChange} value={post.instance} required/>
-                        <button className="btn waves-effect waves-light" id="post-btn" onClick={handleSubmit} type="submit">Post</button>
+                        <button className="btn waves-effect waves-light" id="post-btn" type="submit">Post</button>
                         </div>
                     </div>
                 </form>
-            </div>
+            {/* <PostsFeed/> */}
+        </div>
         
         )
     }

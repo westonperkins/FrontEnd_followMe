@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import {API} from '../../App'
+// import { Link } from 'react-router-dom'
 
 const Users = () => {
     const [ users, setUsers ] = useState([])
 
     useEffect(() => {
-        axios.get('https://followmeapplicationapi.herokuapp.com/', {
+        axios.get(`${API}`, {
             headers: {"auth-token": localStorage.getItem("auth-token")}
         })
         .then(res => setUsers(res.data))

@@ -1,7 +1,10 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useState, useContext} from 'react'
 import axios from 'axios'
 import {UserContext} from '../../App'
+
 import Errors from './Errors'
+import {API} from '../../App'
+
 
 
 
@@ -30,7 +33,7 @@ const CreatePost = () => {
                 postedBy: userData.user.name
             }
     
-            axios.post('https://followmeapplicationapi.herokuapp.com/posts/newpost/', newPost, {
+            axios.post(`${API}/posts/newpost/`, newPost, {
                 headers: {"auth-token": userData.token}
             })
             .then((window.location = "/posts/days"))
