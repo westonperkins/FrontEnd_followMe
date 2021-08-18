@@ -56,7 +56,7 @@ const PostsFeed = () => {
                                         :
                                         <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
                                         }
-                                        <p className="timestamp">{post.date}</p>
+                                        <p className="timestamp">{new Date(post.date).toDateString()}</p>
                                     </div>
                                 </div>
                                     <p className="instance-text">{post.instance}</p>
