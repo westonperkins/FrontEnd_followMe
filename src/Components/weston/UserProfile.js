@@ -59,7 +59,10 @@ const UserProfile = (props) => {
                         <div className="top-post">
                         <div className="name-time">
                         <Link to={`/userprofile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
-                        <p className="timestamp">{new Date(post.date).toDateString()}</p>
+                        <div className='timeUserProf'>
+                            <span className="timestamp">{new Date(post.date).getHours()}:{new Date(post.date).getMinutes()}</span>
+                            <p className="timestamp">{new Date(post.date).toDateString()}</p>
+                        </div>    
                         </div>
                         <div className="edit-delete-container">
                             <button onClick={() => deletePost(post._id)} className="waves-effect btn-flat" id="delete-btn">Delete</button>

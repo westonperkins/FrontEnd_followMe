@@ -5,8 +5,7 @@ import NewPost from './NewPost';
 import { Link } from 'react-router-dom'
 import { UserContext } from '../App.js'
 import {API} from '../App'
-// import M from 'materialize-css'
-// import EditPost from './EditPost';
+
 
 const PostsFeed = () => {
     const { userData, setUserData } = useContext(UserContext)
@@ -19,23 +18,6 @@ const PostsFeed = () => {
         })
         .then(res => setPosts(res.data))
     }, [])
-
-    
-
-    // let allPosts = posts.map(post => {
-    //     return (
-    //         <div className="post-container">
-    //         <div className="top-post">
-    //         <div className="name-time">
-    //             <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
-    //             <p className="timestamp">{post.date}</p>
-    //         </div>
-    //         </div>
-    //             <p className="instance-text">{post.instance}</p>
-    //         </div>
-    //     )
-    // })
-
 
     return (
         <div className="all-posts-container">
@@ -56,7 +38,10 @@ const PostsFeed = () => {
                                         :
                                         <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
                                         }
+                                        <div className='time'>
+                                        <span className="timestamp">{new Date(post.date).getHours()}:{new Date(post.date).getMinutes()}</span>
                                         <p className="timestamp">{new Date(post.date).toDateString()}</p>
+                                        </div>    
                                     </div>
                                 </div>
                                     <p className="instance-text">{post.instance}</p>

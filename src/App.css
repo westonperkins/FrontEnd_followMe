@@ -166,12 +166,23 @@ h3 {
 
   .name-time{
     margin-bottom: 0;
+    width: 100%
   }
 
   .timestamp{
     color: #616161;
     font-size: 0.8em;
     margin-top: 0;
+    padding-right: 1rem;
+  }
+
+  .time {
+    display: flex;
+    /* justify-content: space-between; */
+  }
+
+  .timeUserProf {
+    display: flex;
   }
 
   .instance-text {

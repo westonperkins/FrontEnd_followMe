@@ -48,7 +48,10 @@ const UserPosts = (props) => {
                     return (
                         <div className="post-container">
                         <Link to={`/profile/${post.postedBy}`} name={post.postedBy} className="username">{post.postedBy}</Link>
-                        <p className="timestamp">{new Date(post.date).toDateString()}</p>
+                        <div className='time'>
+                            <span className="timestamp">{new Date(post.date).getHours()}:{new Date(post.date).getMinutes()}</span>
+                            <p className="timestamp">{new Date(post.date).toDateString()}</p>
+                        </div>    
                         <hr></hr>
                         <p className="instance-text">{post.instance}</p>
                         </div>
