@@ -4,6 +4,7 @@ import './Register.css'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import Errors from '../Errors'
+import {API} from '../../../App'
 
 const Register =  () => {
     const { userData, setUserData } = useContext(UserContext)
@@ -45,11 +46,11 @@ const Register =  () => {
                 software: formState.software,
                 hardware: formState.hardware,
             }
-            await axios.post('https://followmeapplicationapi.herokuapp.com/register/', newUser)
+            await axios.post(`${API}/register/`, newUser)
             .then(res => console.log(res.data))
             .then(console.log(newUser.name + " has been added"))
      
-            const loginResponse = await axios.post('https://followmeapplicationapi.herokuapp.com/login', newUser)
+            const loginResponse = await axios.post(`${API}/login`, newUser)
             console.log(loginResponse.data)
         
             setUserData({

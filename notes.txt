@@ -1,0 +1,7 @@
+npm start === NODE_ENV = 'development'
+npm test === NODE_ENV = 'test'
+npm run build === NODE_ENV = 'produciton'
+
+** if you want to assign env variables in react they must start with REACT_APP_<variable name>
+
+restart server and restart if your new env variables are not showing up

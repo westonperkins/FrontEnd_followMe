@@ -3,6 +3,9 @@ import React, { useState, useContext } from 'react'
 import axios from 'axios'
 import { UserContext } from '../../App'
 import Errors from "./Errors";
+import {API} from '../../App'
+
+
 
 const Login = () => { 
 
@@ -18,21 +21,22 @@ const Login = () => {
 
     const handleChange = (e) => {
         setFormState({ ...formState, [e.target.id]: e.target.value })
-        console.log(formState)
-        console.log(userData)
+        // console.log(formState)
+        // console.log(userData)
     }
 
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(formState)
+        // console.log(formState)
         try {
             const newUser = {
                 username: formState.username,
                 password: formState.password
             }
             
-            const loginResponse = await axios.post('https://followmeapplicationapi.herokuapp.com/login', newUser)
+            const loginResponse = await axios.post(`${API}/login`, newUser)
+
             setUserData({
                 token: loginResponse.data.token,
                 user: loginResponse.data.user

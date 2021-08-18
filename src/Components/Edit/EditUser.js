@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { Route, Link, useHistory } from 'react-router-dom'
 import axios from 'axios';
+import {API} from '../../App'
 
 const EditUser = ({match}) => {
     const history = useHistory()
@@ -9,7 +10,7 @@ const EditUser = ({match}) => {
 
 
     useEffect(() => {
-        axios.get(`https://followmeapplicationapi.herokuapp.com/${match.params.username}`)
+        axios.get(`${API}/${match.params.username}`)
         // .then(res => res.data )
         .then(res => setUpdateData(res.data))
         .catch(err => console.error(err))
@@ -34,7 +35,7 @@ const EditUser = ({match}) => {
     profileImage: updateData.profileImage
 } 
     
-axios.put(`https://followmeapplicationapi.herokuapp.com/${match.params.username}/edit`, editedUser)
+axios.put(`${API}/${match.params.username}/edit`, editedUser)
 .then(() => console.log(`updated username: "${updateData.username}" successful`) )
 .then(res => history.push(`/profile/${updateData.username}`))
 // .then(res =>  setUpdateData(res))

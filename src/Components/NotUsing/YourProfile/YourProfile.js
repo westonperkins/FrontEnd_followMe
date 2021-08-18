@@ -9,8 +9,7 @@ const YourProfile = ({match}) => {
     useEffect(() => {
       // console.log(persons.username);
       axios.get(`https://followmeapplicationapi.herokuapp.com/${match.params.username}`)
-      // axios.get('http://localhost:5000/')
-      // .then(res => res.json())
+
       .then(res => setPersons(res.data))
       .catch(console.err)
     }, [])
@@ -51,9 +50,6 @@ const YourProfile = ({match}) => {
                   <p><em style={userStyle}>position</em>: {person.position}</p>
                   <p><em style={userStyle}>software</em>: {person.software.map(p => <li key={p} value={p}>{p}</li> )}</p>
                   <p><em style={userStyle}>hardware</em>: {person.hardware.map(b => <li key={b} value={b}>{b}</li> )}</p>
-
-                 
-          
             </div>
               )
           ) }
