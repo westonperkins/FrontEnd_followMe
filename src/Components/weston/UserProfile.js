@@ -50,7 +50,7 @@ const UserProfile = (props) => {
                     <span className="profile-details"> {userData.user.software}</span></p>
             </div>
             <div>
-            <h4>{props.match.params.user}'s Posts</h4> 
+            {/* <h4>{props.match.params.user}'s Posts</h4>  */}
             {posts.map((post) => {
                 // console.log(post)
                 if(props.match.params.user === post.postedBy) {
