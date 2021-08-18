@@ -43,6 +43,7 @@ const UserPosts = (props) => {
             {console.log(props.match.params.user)} */}
             {/* <h4>{props.match.params.user}'s Posts</h4>  */}
             {posts.map((post) => {
+
                 if(props.match.params.user === post.postedBy) {
                     return (
                         <div className="post-container">
