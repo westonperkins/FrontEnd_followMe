@@ -9,6 +9,7 @@ Our app allows users to share activities from the day-to-day of their jobs. By s
 
 
 #### Test it out here: [Follow Me](https://followmeapplication.herokuapp.com/)
+![followme](https://user-images.githubusercontent.com/79667230/139553884-2a0adcb9-eeb1-4233-9abc-78e9a8e0e0d8.gif)
 
 ### Languages & Frameworks Used
 - React
